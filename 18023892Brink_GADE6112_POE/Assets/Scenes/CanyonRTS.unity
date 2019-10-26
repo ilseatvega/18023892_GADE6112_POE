@@ -659,6 +659,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -698,7 +699,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 52.574524
+  field of view: 49
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -724,12 +725,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0.000055617886, y: -0.9751615, z: 0.22147143, w: 0.0032387401}
-  m_LocalPosition: {x: 2.4, y: 57.1, z: 58.9}
+  m_LocalPosition: {x: 6.9, y: 57.1, z: 58.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 25.591002, y: 180.40298, z: -359.902}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab2b6ca8a8a0ff74d84690dd3db8a63f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeedMouse: 4
 --- !u!1001 &538859766
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1110,7 +1124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740c5369a383b874389f079c601fa030, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -76.1
+      value: -69.4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 740c5369a383b874389f079c601fa030, type: 3}
       propertyPath: m_LocalRotation.x
