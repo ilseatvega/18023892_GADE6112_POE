@@ -182,6 +182,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3068988, y: 2.3996377, z: 1.5221343}
   m_Center: {x: -0.0044893622, y: 1.1998188, z: 0.19550654}
+--- !u!114 &112882947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112882941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1 &176523661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e7ea63039a9761d4b81e3b97ebbde0ad,
@@ -356,6 +369,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &365339472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365339466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &394132440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -381,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d57792567b9d5ca489c262f6e6f75ab3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6000013
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d57792567b9d5ca489c262f6e6f75ab3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -743,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2b6ca8a8a0ff74d84690dd3db8a63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panSpeed: 40
   zoomSpeedMouse: 4
 --- !u!1001 &538859766
 PrefabInstance:
@@ -823,6 +850,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 394132440}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &601155011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601155010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!65 &601155014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1449,6 +1489,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3068988, y: 2.3996377, z: 1.5221343}
   m_Center: {x: -0.0044893622, y: 1.1998188, z: 0.19550654}
+--- !u!114 &927898341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927898335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &965767972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1541,6 +1594,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &981451188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981451182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &1054751091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2042,6 +2108,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3068988, y: 2.3996377, z: 1.5221343}
   m_Center: {x: -0.0044893622, y: 1.1998188, z: 0.19550654}
+--- !u!114 &1490008737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490008731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &1519504998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2542,6 +2621,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3068988, y: 2.3996377, z: 1.5221343}
   m_Center: {x: -0.0044893622, y: 1.1998188, z: 0.19550654}
+--- !u!114 &1691990310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691990304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &1726579812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2883,6 +2975,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3068988, y: 2.3996377, z: 1.5221343}
   m_Center: {x: -0.0044893622, y: 1.1998188, z: 0.19550654}
+--- !u!114 &1920071037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920071031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1 &1962708067 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: d57792567b9d5ca489c262f6e6f75ab3,
@@ -2918,6 +3023,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1962708073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962708067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &2008477425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3001,6 +3119,10 @@ PrefabInstance:
     - target: {fileID: 100004, guid: 890e532fa04e05a40ba078987f4af35c, type: 3}
       propertyPath: m_Name
       value: Terrain_Final2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 890e532fa04e05a40ba078987f4af35c, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 890e532fa04e05a40ba078987f4af35c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3168,6 +3290,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2064868787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064868781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bc1477401aa654eb74cc2cb67447da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGround: 0
 --- !u!1001 &2113888118
 PrefabInstance:
   m_ObjectHideFlags: 0
