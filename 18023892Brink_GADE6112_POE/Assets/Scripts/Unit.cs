@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour
 {
     //declaring the field protected definitions
     protected float health;
@@ -26,25 +26,25 @@ abstract class Unit : MonoBehaviour
 
     //declaring public abstracts
     public abstract void Move();
-    public abstract void Combat();
-    public abstract bool WithinRange();
+    public abstract void Damage(float damAmount);
+    public abstract void Combat(GameObject enemy);
+
     //declaring new building range and closest building pos to att buildings
     //public abstract bool BuildingRange(Building enemy);
     //public abstract Building ClosestBuilding(Building[] building);
     //public abstract void BuildingCombat(Building enemy);
 
-    //public abstract GameObject ClosestUnitPos(string target);
     public abstract void UnitDeath();
     //the abstract Save() method
     //public abstract void Save();
-
+    
 
     //putting the accessors in the Unit class so I can get my map update to work
 
     public float maxHP { get { return health; } }
 
     //gets health and sets it to call death if health is 0
-    public float Health { get { return health; } set { if (value < 0) { health = 0; this.UnitDeath(); } else { health = value; } } }
+    public float Health { get { return health; } set { if (value < 0) { health = 0; } else { health = value; } } }
 
     public float Attack { get { return attack; } set { attack = value; } }
 
