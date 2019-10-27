@@ -82,13 +82,13 @@ class MeleeUnit : Unit
             }
         }
         //same as above
-        if (!gameObject.CompareTag("Wizards"))
-        {
-            foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
-            {
-                enemies.Add(u);
-            }
-        }
+        //if (!gameObject.CompareTag("Wizards"))
+        //{
+        //    foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
+        //    {
+        //        enemies.Add(u);
+        //    }
+        //}
 
         //finding closest unit pos
         GameObject closest = gameObject;
@@ -152,7 +152,7 @@ class MeleeUnit : Unit
     }
     public override void Combat(GameObject enemy)
     {
-        MeleeUnit u = enemy.GetComponent<MeleeUnit>();
+        Unit u = enemy.GetComponent<Unit>();
             u.Damage(attack * Time.deltaTime);
     }
     
