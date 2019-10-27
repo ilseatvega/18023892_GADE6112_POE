@@ -7,7 +7,6 @@ public class FactoryBuilding : Building
     //variables specific to Resource Building
     float unitType;
     float speed = 5;
-    float[] spawnPoint = new float[2];
     //cost
     float cost = 20;
 
@@ -33,7 +32,11 @@ public class FactoryBuilding : Building
     // Update is called once per frame
     void Update()
     {
-
+        //spawnDelay += Time.deltaTime;
+        //if (spawnDelay >= 5)
+        //{
+        //    Spawn();
+        //}
     }
 
     //overriding the abstract methods created in Building
@@ -42,9 +45,13 @@ public class FactoryBuilding : Building
 
     }
 
-    //public Unit Spawn()
-    //{
-    //}
+    //spawn random units
+    public void Spawn()
+    {
+        //Instantiate(greenPrefab, new Vector3(), Quaternion.identity);
+        ////setting the delay back to 0
+        //spawnDelay = 0;
+    }
 
     //check for closest building that has resources required
     //public bool closestResources(Building[] buildings)

@@ -17,7 +17,7 @@ public class WizardUnit : Unit
 
     //using a base constructor to access Unit's variables (properties must be accessed from MeleeUnit which is why base is used)
     //health, speed, attackrange and attack changed to fit the MeleeUnit
-    public WizardUnit(int health, int speed, int attack, int attackRange, int team, int maxHP) : base(65, 5, 5, 40, team, 100)
+    public WizardUnit(int health, int speed, int attack, int attackRange, int team, int maxHP) : base(70, 10, 5, 5, team, 60)
     {
         //this. to refer to the instance of the variable in this class
         this.health = health;
@@ -29,7 +29,7 @@ public class WizardUnit : Unit
     //initialise when game starts
     private void Start()
     {
-        maxHealth = 60;
+        maxHealth = 70;
         health = maxHealth;
         Attack = 5;
         //healthbar = (gameObject.GetComponentInChildren<Canvas>()).GetComponentInChildren<Slider>();
