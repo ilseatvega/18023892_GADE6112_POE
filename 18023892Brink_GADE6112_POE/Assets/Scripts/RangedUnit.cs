@@ -14,7 +14,7 @@ public class RangedUnit : Unit
 
     //using a base constructor to access Unit's variables (properties must be accessed from MeleeUnit which is why base is used)
     //health, speed, attackrange and attack changed to fit the MeleeUnit
-    public RangedUnit(int health, int speed, int attack, int attackRange, int team, int maxHP) : base(40, 5, 10, 30, team, 40)
+    public RangedUnit(int health, int speed, int attack, int attackRange, int team, int maxHP) : base(40, 5, 5, 30, team, 40)
     {
         //this. to refer to the instance of the variable in this class
         this.health = health;
@@ -27,9 +27,9 @@ public class RangedUnit : Unit
     //initialise when game starts
     private void Start()
     {
-        maxHealth = 40;
+        maxHealth = 35;
         health = maxHealth;
-        Attack = 10;
+        Attack = 5;
         //healthbar = (gameObject.GetComponentInChildren<Canvas>()).GetComponentInChildren<Slider>();
         healthbar.value = 1;
     }
@@ -50,6 +50,23 @@ public class RangedUnit : Unit
         if (col.gameObject.tag == "Floor")
         {
             onGround = false;
+        }
+    }
+    public void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Wizards"))
+        {
+            WizardUnit wizard = col.gameObject.GetComponent<WizardUnit>();
+            wizard.inRange.Add(gameObject);
+        }
+    }
+
+    public void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("Wizards"))
+        {
+            WizardUnit wizard = col.gameObject.GetComponent<WizardUnit>();
+            wizard.inRange.Remove(gameObject);
         }
     }
 
@@ -81,13 +98,13 @@ public class RangedUnit : Unit
             }
         }
         //same as above
-        //if (!gameObject.CompareTag("Wizards"))
-        //{
-        //    foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
-        //    {
-        //        enemies.Add(u);
-        //    }
-        //}
+        if (!gameObject.CompareTag("Wizards"))
+        {
+            foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
+            {
+                enemies.Add(u);
+            }
+        }
 
         //finding closest unit pos
         GameObject closest = gameObject;
@@ -112,18 +129,8 @@ public class RangedUnit : Unit
             //if they are not within att range
             if (closestDistance > attackRange)
             {
-                //if they are gold team
-                if (gameObject.CompareTag("Gold Team"))
-                {
-                    //having them move left - my axis is messed up :( 
-                    transform.Translate(-transform.right * speed * Time.deltaTime);
-                }
-                //if they are green team
-                if (gameObject.CompareTag("Green Team"))
-                {
-                    //having them move right
-                    transform.Translate(transform.right * speed * Time.deltaTime);
-                }
+                //having them move forward 
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
             //if they are within attack range
             else if (closestDistance <= attackRange)

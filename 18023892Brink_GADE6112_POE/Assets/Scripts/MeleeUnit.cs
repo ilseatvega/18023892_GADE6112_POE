@@ -15,7 +15,7 @@ class MeleeUnit : Unit
 
     //using a base constructor to access Unit's variables (properties must be accessed from MeleeUnit which is why base is used)
     //health, speed, attackrange and attack changed to fit the MeleeUnit
-        public MeleeUnit(int health, int speed, int attack, int attackRange, int team, int maxHP) : base(50, 10, 5, 14, team, 50)
+        public MeleeUnit(int health, int speed, int attack, int attackRange, int team, int maxHP) : base(50, 10, 5, 12, team, 50)
     {
         //this. to refer to the instance of the variable in this class
         this.health = health;
@@ -54,13 +54,31 @@ class MeleeUnit : Unit
         }
     }
 
+    public void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("Wizards"))
+        {
+            WizardUnit wizard = col.gameObject.GetComponent<WizardUnit>();
+            wizard.inRange.Add(gameObject);
+        }
+    }
+
+    public void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.CompareTag("Wizards"))
+        {
+            WizardUnit wizard = col.gameObject.GetComponent<WizardUnit>();
+            wizard.inRange.Remove(gameObject);
+        }
+    }
+
     //MOVE
     public override void Move()
     {
         //set speed to 10f
         speed = 10f;
         //attack range of the meleeunit
-        attackRange = 14f;
+        attackRange = 12f;
         //creating a list of enemies to store unts not on our team
         List<GameObject> enemies = new List<GameObject>();
         
@@ -82,13 +100,13 @@ class MeleeUnit : Unit
             }
         }
         //same as above
-        //if (!gameObject.CompareTag("Wizards"))
-        //{
-        //    foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
-        //    {
-        //        enemies.Add(u);
-        //    }
-        //}
+        if (!gameObject.CompareTag("Wizards"))
+        {
+            foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
+            {
+                enemies.Add(u);
+            }
+        }
 
         //finding closest unit pos
         GameObject closest = gameObject;
@@ -113,18 +131,8 @@ class MeleeUnit : Unit
             //if they are not within att range
             if (closestDistance > attackRange)
             {
-                //if they are gold team
-                if (gameObject.CompareTag("Gold Team"))
-                {
-                    //having them move left - my axis is messed up :( 
-                    transform.Translate(-transform.right * speed * Time.deltaTime);
-                }
-                //if they are green team
-                if (gameObject.CompareTag("Green Team"))
-                {
-                    //having them move right
-                    transform.Translate(transform.right * speed * Time.deltaTime);
-                }
+                //having them move forward
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
             //if they are within attack range
             else if (closestDistance <= attackRange)

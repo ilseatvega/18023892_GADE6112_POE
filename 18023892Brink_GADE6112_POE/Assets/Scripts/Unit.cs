@@ -28,16 +28,16 @@ public abstract class Unit : MonoBehaviour
     public abstract void Move();
     public abstract void Damage(float damAmount);
     public abstract void Combat(GameObject enemy);
+    public abstract void UnitDeath();
 
     //declaring new building range and closest building pos to att buildings
     //public abstract bool BuildingRange(Building enemy);
     //public abstract Building ClosestBuilding(Building[] building);
     //public abstract void BuildingCombat(Building enemy);
-
-    public abstract void UnitDeath();
+    
     //the abstract Save() method
     //public abstract void Save();
-    
+
 
     //putting the accessors in the Unit class so I can get my map update to work
 
