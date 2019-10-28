@@ -8,7 +8,6 @@ public class GoldMelee : MonoBehaviour
     public GameObject meleePrefab;
     //spawn delay
     public float spawnDelay;
-    Random rnd = new Random();
 
     //spawn random units
     public void Spawn()
@@ -23,7 +22,7 @@ public class GoldMelee : MonoBehaviour
     void Update()
     {
         spawnDelay += Time.deltaTime;
-        if (spawnDelay >= 5)
+        if (spawnDelay >= 8)
         {
             Spawn();
         }

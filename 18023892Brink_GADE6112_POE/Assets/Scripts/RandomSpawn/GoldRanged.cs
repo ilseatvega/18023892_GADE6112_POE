@@ -8,8 +8,7 @@ public class GoldRanged : MonoBehaviour
     public GameObject rangedPrefab;
     //spawn delay
     public float spawnDelay;
-    Random rnd = new Random();
-
+    
     //spawn random units
     public void Spawn()
     {
@@ -23,7 +22,7 @@ public class GoldRanged : MonoBehaviour
     void Update()
     {
         spawnDelay += Time.deltaTime;
-        if (spawnDelay >= 7)
+        if (spawnDelay >= 13)
         {
             Spawn();
         }

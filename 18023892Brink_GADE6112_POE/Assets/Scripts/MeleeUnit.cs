@@ -80,13 +80,13 @@ class MeleeUnit : Unit
         //set speed to 10f
         speed = 10f;
         //attack range of the meleeunit
-        attackRange = 12f;
+        attackRange = 6f;
         //if health less than 25%, run away
-        if (healthbar.value <= 0.25)
-        {
-            //having them move backward to run away
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
-        }
+        //if (healthbar.value <= 0.25)
+        //{
+        //    //having them move backward to run away
+        //    transform.Translate(Vector3.back * speed * Time.deltaTime);
+        //}
             //creating a list of enemies to store unts not on our team
             List<GameObject> enemies = new List<GameObject>();
 

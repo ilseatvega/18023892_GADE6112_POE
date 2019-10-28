@@ -10,22 +10,38 @@ public class ResourceBuilding : Building
     public Slider healthbar;
     public Text resUpdate;
 
-
     //variables specific to Resource Building
     public float resGen;
-    public static float resGenRound;
-    public static float resRemaining;
+    public float resGenRound;
+    public float resRemaining;
+    float cost;
     //spawn delay
     public float resDelay;
+
+    //GameObject goldr = GameObject.FindGameObjectWithTag("GoldR");
+    //GameObject goldm = GameObject.FindGameObjectWithTag("GoldM");
+    //GameObject greenm = GameObject.FindGameObjectWithTag("GreenR");
+    //GameObject greenr = GameObject.FindGameObjectWithTag("GreenM");
 
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = 200;
+        //GameObject goldr = GameObject.FindGameObjectWithTag("GoldR");
+        //GameObject goldm = GameObject.FindGameObjectWithTag("GoldM");
+        //GameObject greenm = GameObject.FindGameObjectWithTag("GreenR");
+        //GameObject greenr = GameObject.FindGameObjectWithTag("GreenM");
+
+        //goldm.GetComponent<GoldMelee>().enabled = false;
+        //greenm.GetComponent<GreenMelee>().enabled = false;
+        //goldr.GetComponent<GoldRanged>().enabled = false;
+        //greenr.GetComponent<GreenRanged>().enabled = false;
+
+        maxHealth = 100;
         health = maxHealth;
         healthbar.value = 1;
         resGenRound = 20;
         resRemaining = 1000;
+        cost = 200;
     }
 
     //constructor that receives parameteres for all the above class variables (except maxhealth)
@@ -67,6 +83,7 @@ public class ResourceBuilding : Building
     {
         //if resources remaining minus the resources that are being generated per round is more than 0
         resDelay += Time.deltaTime;
+        //updating resources every second
         if (resDelay >= 1)
         {
             if (resRemaining - resGenRound >= 0)
@@ -84,8 +101,26 @@ public class ResourceBuilding : Building
             }
             resDelay = 0;
         }
-        
-        resUpdate.text = "Resources Gathered: " + "\n" + resGen;
+            resUpdate.text = "Resources Gathered: " + "\n" + resGen;
+
+            //if (resGen >= cost)
+            //{
+            //    if (goldm !=null && goldr != null && greenm !=null && greenr != null)
+            //    {
+            //        goldm.GetComponent<GoldMelee>().enabled = true;
+            //        greenm.GetComponent<GreenMelee>().enabled = true;
+            //        goldr.GetComponent<GoldRanged>().enabled = true;
+            //        greenr.GetComponent<GreenRanged>().enabled = true;
+            //        resGen -= cost;
+            //    }
+            //}
+            //else
+            //{
+            //    goldm.GetComponent<GoldMelee>().enabled = false;
+            //    greenm.GetComponent<GreenMelee>().enabled = false;
+            //    goldr.GetComponent<GoldRanged>().enabled = false;
+            //    greenr.GetComponent<GreenRanged>().enabled = false;
+            //}
     }
 
     // Update is called once per frame

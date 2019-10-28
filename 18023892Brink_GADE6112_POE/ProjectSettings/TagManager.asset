@@ -8,6 +8,10 @@ TagManager:
   - Green Team
   - Wizards
   - Floor
+  - GoldR
+  - GoldM
+  - GreenR
+  - GreenM
   layers:
   - Default
   - TransparentFX

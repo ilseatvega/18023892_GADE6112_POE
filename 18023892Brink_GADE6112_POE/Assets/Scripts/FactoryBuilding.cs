@@ -13,15 +13,15 @@ public class FactoryBuilding : Building
     float cost;
     //the healthbar slider
     public Slider healthbar;
-    [SerializeField]
-    GameObject resourceB;
-    ResourceBuilding resource;
-    float getRes;
+    //[SerializeField]
+    //GameObject resourceB;
+    //ResourceBuilding resource;
+    //float getRes;
 
-    GameObject goldr = GameObject.Find("Gold Ranged Spawn");
-    GameObject goldm = GameObject.Find("Gold Melee Spawn");
-    GameObject greenm = GameObject.Find("Green Melee Spawn");
-    GameObject greenr = GameObject.Find("Green Ranged Spawn");
+    //GameObject goldr = GameObject.Find("Gold Ranged Spawn");
+    //GameObject goldm = GameObject.Find("Gold Melee Spawn");
+    //GameObject greenm = GameObject.Find("Green Melee Spawn");
+    //GameObject greenr = GameObject.Find("Green Ranged Spawn");
 
     //constructor that receives parameteres for all the above class variables (except maxhealth)
     //setting the protected ints that were declared to the parameters of this ResourceBuilding method
@@ -36,38 +36,38 @@ public class FactoryBuilding : Building
     // Start is called before the first frame update
     void Start()
     {
-        goldm.GetComponent<GoldMelee>().enabled = false;
-        greenm.GetComponent<GreenMelee>().enabled = false;
-        goldr.GetComponent<GoldRanged>().enabled = false;
-        greenr.GetComponent<GreenRanged>().enabled = false;
+        //goldm.GetComponent<GoldMelee>().enabled = false;
+        //greenm.GetComponent<GreenMelee>().enabled = false;
+        //goldr.GetComponent<GoldRanged>().enabled = false;
+        //greenr.GetComponent<GreenRanged>().enabled = false;
 
-        maxHealth = 200;
+        maxHealth = 100;
         health = maxHealth;
         healthbar.value = 1;
         cost = 200;
-        resource = resourceB.GetComponent<ResourceBuilding>();
-        getRes = resource.resGen;
+        //resource = resourceB.GetComponent<ResourceBuilding>();
+        //getRes = resource.resGen;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (getRes >= cost)
-        {
-            goldm.gameObject.GetComponent<GoldMelee>().enabled = true;
-            greenm.GetComponent<GreenMelee>().enabled = true;
-            goldr.GetComponent<GoldRanged>().enabled = true;
-            greenr.GetComponent<GreenRanged>().enabled = true;
+        //if (getRes >= cost)
+        //{
+        //    goldm.gameObject.GetComponent<GoldMelee>().enabled = true;
+        //    greenm.GetComponent<GreenMelee>().enabled = true;
+        //    goldr.GetComponent<GoldRanged>().enabled = true;
+        //    greenr.GetComponent<GreenRanged>().enabled = true;
 
-            getRes -= cost;
-        }
-        else
-        {
-            goldm.GetComponent<GoldMelee>().enabled = false;
-            greenm.GetComponent<GreenMelee>().enabled = false;
-            goldr.GetComponent<GoldRanged>().enabled = false;
-            greenr.GetComponent<GreenRanged>().enabled = false;
-        }
+        //    getRes -= cost;
+        //}
+        //else
+        //{
+        //    goldm.GetComponent<GoldMelee>().enabled = false;
+        //    greenm.GetComponent<GreenMelee>().enabled = false;
+        //    goldr.GetComponent<GoldRanged>().enabled = false;
+        //    greenr.GetComponent<GreenRanged>().enabled = false;
+        //}
     }
 
     public override void Damage(float damAmount)
