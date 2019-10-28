@@ -10,10 +10,13 @@ public class ResourceBuilding : Building
     public Slider healthbar;
     public Text resUpdate;
 
+
     //variables specific to Resource Building
-    float resGen;
-    float resGenRound = 20;
-    float resRemaining = 1000;
+    public float resGen;
+    public static float resGenRound;
+    public static float resRemaining;
+    //spawn delay
+    public float resDelay;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,8 @@ public class ResourceBuilding : Building
         maxHealth = 200;
         health = maxHealth;
         healthbar.value = 1;
+        resGenRound = 20;
+        resRemaining = 1000;
     }
 
     //constructor that receives parameteres for all the above class variables (except maxhealth)
@@ -61,21 +66,26 @@ public class ResourceBuilding : Building
     public void resManagement()
     {
         //if resources remaining minus the resources that are being generated per round is more than 0
-        if (resRemaining - resGenRound >= 0)
+        resDelay += Time.deltaTime;
+        if (resDelay >= 1)
         {
-            //there is still resources left
-            //calculate new resremaining amount and resgen amount
-            resGen += resGenRound;
-            resRemaining -= resGenRound;
+            if (resRemaining - resGenRound >= 0)
+            {
+                //there is still resources left
+                //calculate new resremaining amount and resgen amount
+                resGen += resGenRound;
+                resRemaining -= resGenRound;
+            }
+            else
+            {
+                //no resources left
+                resGen += resRemaining;
+                resRemaining = 0;
+            }
+            resDelay = 0;
         }
-        else
-        {
-            //no resources left
-            resGen += resRemaining;
-            resRemaining = 0;
-        }
-        Debug.Log(resRemaining);
-        resUpdate.text = "Resources Remaining: " + "\n" + resRemaining;
+        
+        resUpdate.text = "Resources Gathered: " + "\n" + resGen;
     }
 
     // Update is called once per frame
