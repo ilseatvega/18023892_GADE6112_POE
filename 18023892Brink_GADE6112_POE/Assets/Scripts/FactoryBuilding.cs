@@ -1,56 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//added for healthbar
+using UnityEngine.UI;
 
 public class FactoryBuilding : Building
 {
     //variables specific to Resource Building
-    float unitType;
-    float speed = 5;
+    //float unitType;
+    //float speed = 5;
     //cost
-    float cost = 20;
+    float cost = 50;
+    //the healthbar slider
+    public Slider healthbar;
 
-    //random to be used throughout the class
-    Random rnd = new Random();
 
     //constructor that receives parameteres for all the above class variables (except maxhealth)
     //setting the protected ints that were declared to the parameters of this ResourceBuilding method
-    public FactoryBuilding(float health, float team, float unitType, float maxHP) : base(200, team)
+    public FactoryBuilding(float health, float team, /*float unitType,*/ float maxHP) : base(200, team)
     {
         //this. to refer to the instance of the variable in this class
         this.health = health;
         this.team = team;
-        this.unitType = unitType;
+        //this.unitType = unitType;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        maxHealth = 200;
+        health = maxHealth;
+        healthbar.value = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //spawnDelay += Time.deltaTime;
-        //if (spawnDelay >= 5)
-        //{
-        //    Spawn();
-        //}
+        
+    }
+
+    public override void Damage(float damAmount)
+    {
+        //health decreases according to damage taken
+        health -= damAmount;
+
+        //if healthbar not null
+        if (healthbar != null)
+        {
+            //healthbar's calue is the health divided by the max
+            healthbar.value = health / maxHealth;
+        }
+        //if healthbar reaches 0, destroy this unit
+        if (healthbar.value == 0)
+        {
+            Destruction();
+        }
     }
 
     //overriding the abstract methods created in Building
     public override void Destruction()
     {
-
-    }
-
-    //spawn random units
-    public void Spawn()
-    {
-        //Instantiate(greenPrefab, new Vector3(), Quaternion.identity);
-        ////setting the delay back to 0
-        //spawnDelay = 0;
+        //destroy gameobj
+        Destroy(gameObject);
     }
 
     //check for closest building that has resources required
@@ -58,8 +69,6 @@ public class FactoryBuilding : Building
     //{
     //}
 
-    //get accessor for production speed
-    public float Speed { get { return speed; } }
 
     //get setters -  wouldnt work unless i put them in the Building class
 

@@ -31,7 +31,6 @@ class MeleeUnit : Unit
         maxHealth = 50;
         health = maxHealth;
         Attack = 5;
-        //healthbar = (gameObject.GetComponentInChildren<Canvas>()).GetComponentInChildren<Slider>();
         healthbar.value = 1;
     }
     //oncollionenter - when this unit collides with an object (floor)
@@ -53,20 +52,23 @@ class MeleeUnit : Unit
             onGround = false;
         }
     }
-
+    //for the wizard aoe - when entering the trigger event that is the sphere collider
     public void OnTriggerEnter(Collider col)
     {
+        //if collide w wizards
         if (col.gameObject.CompareTag("Wizards"))
         {
+            //add this gameobject to the inrange list to take damage
             WizardUnit wizard = col.gameObject.GetComponent<WizardUnit>();
             wizard.inRange.Add(gameObject);
         }
     }
-
+    //if stop colliding w wizards
     public void OnTriggerExit(Collider col)
     {
         if (col.gameObject.CompareTag("Wizards"))
         {
+            //remove this gameobject from the inrange list to not take damage anymore
             WizardUnit wizard = col.gameObject.GetComponent<WizardUnit>();
             wizard.inRange.Remove(gameObject);
         }
@@ -79,77 +81,85 @@ class MeleeUnit : Unit
         speed = 10f;
         //attack range of the meleeunit
         attackRange = 12f;
-        //creating a list of enemies to store unts not on our team
-        List<GameObject> enemies = new List<GameObject>();
-        
-        //if the game object is not in in same team (gold in this case) then add to enemy list
-        //will cycle through all 3 ifs until it finds one that is true
-        if (!gameObject.CompareTag("Gold Team"))
+        //if health less than 25%, run away
+        if (healthbar.value <= 0.25)
         {
-            foreach (GameObject u in GameObject.FindGameObjectsWithTag("Gold Team"))
-            {
-                enemies.Add(u);
-            }
+            //having them move backward to run away
+            transform.Translate(Vector3.back * speed * Time.deltaTime);
         }
-        //same as above
-        if (!gameObject.CompareTag("Green Team"))
-        {
-            foreach (GameObject u in GameObject.FindGameObjectsWithTag("Green Team"))
-            {
-                enemies.Add(u);
-            }
-        }
-        //same as above
-        if (!gameObject.CompareTag("Wizards"))
-        {
-            foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
-            {
-                enemies.Add(u);
-            }
-        }
+            //creating a list of enemies to store unts not on our team
+            List<GameObject> enemies = new List<GameObject>();
 
-        //finding closest unit pos
-        GameObject closest = gameObject;
-        float closestDistance = float.MaxValue;
-        
-        //foreach gamobj in the enemy list
-        foreach (GameObject u in enemies)
-        {
-            //if distance is  less than the closest dist
-            if (Vector3.Distance(gameObject.transform.position, u.transform.position) < closestDistance)
+            //if the game object is not in in same team (gold in this case) then add to enemy list
+            //will cycle through all 3 ifs until it finds one that is true
+            if (!gameObject.CompareTag("Gold Team"))
             {
-                closestDistance = Vector3.Distance(gameObject.transform.position, u.transform.position);
-                closest = u;
+                foreach (GameObject u in GameObject.FindGameObjectsWithTag("Gold Team"))
+                {
+                    enemies.Add(u);
+                }
             }
-        }
+            //same as above
+            if (!gameObject.CompareTag("Green Team"))
+            {
+                foreach (GameObject u in GameObject.FindGameObjectsWithTag("Green Team"))
+                {
+                    enemies.Add(u);
+                }
+            }
+            //same as above
+            if (!gameObject.CompareTag("Wizards"))
+            {
+                foreach (GameObject u in GameObject.FindGameObjectsWithTag("Wizards"))
+                {
+                    enemies.Add(u);
+                }
+            }
 
-        //if the closests isnt the game obj itself
-        if (!closest.Equals(gameObject))
-        {
-            //look at the closest enemy
-            transform.LookAt(closest.transform.position);
-            //if they are not within att range
-            if (closestDistance > attackRange)
+            //finding closest unit pos
+            GameObject closest = gameObject;
+            float closestDistance = float.MaxValue;
+
+            //foreach gamobj in the enemy list
+            foreach (GameObject u in enemies)
             {
-                //having them move forward
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                //if distance is  less than the closest dist
+                if (Vector3.Distance(gameObject.transform.position, u.transform.position) < closestDistance)
+                {
+                    //then this is the closest distance
+                    closestDistance = Vector3.Distance(gameObject.transform.position, u.transform.position);
+                    closest = u;
+                }
             }
-            //if they are within attack range
-            else if (closestDistance <= attackRange)
+
+            //if the closests isnt the game obj itself
+            if (!closest.Equals(gameObject))
             {
-                //attaaack!
-                Combat(closest);
+                //look at the closest enemy
+                transform.LookAt(closest.transform.position);
+                //if they are not within att range
+                if (closestDistance > attackRange)
+                {
+                    //having them move forward
+                    transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                }
+                //if they are within attack range
+                else if (closestDistance <= attackRange)
+                {
+                    //attaaack!
+                    Combat(closest);
+                }
             }
         }
-    }
     //
     public override void Damage(float damAmount)
     {
         //health decreases according to damage taken
         health -= damAmount;
-
+        //if health bar not null
         if (healthbar != null)
         {
+            //healthbar value = health div by maxh
             healthbar.value = health / maxHealth;
         }
         //if healthbar reaches 0, destroy this unit
@@ -161,19 +171,27 @@ class MeleeUnit : Unit
     public override void Combat(GameObject enemy)
     {
         Unit u = enemy.GetComponent<Unit>();
+        Building b = enemy.GetComponent<Building>();
+        if (u != null)
+        {
             u.Damage(attack * Time.deltaTime);
+        }
+        else if (b != null)
+        {
+            b.Damage(attack * Time.deltaTime);
+        }
     }
     
     public override void UnitDeath()
     {
-            Destroy(gameObject);
+        //destroy the gameobj
+        Destroy(gameObject);
     }
 
     //updates every frame
     private void Update()
     {
         //if unit is on the ground, they can move towards their closest enemy
-        //GameObject floor = GameObject.FindGameObjectWithTag("Floor");
         if (onGround == true)
         {
             Move();

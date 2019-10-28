@@ -35,9 +35,6 @@ public abstract class Unit : MonoBehaviour
     //public abstract Building ClosestBuilding(Building[] building);
     //public abstract void BuildingCombat(Building enemy);
     
-    //the abstract Save() method
-    //public abstract void Save();
-
 
     //putting the accessors in the Unit class so I can get my map update to work
 

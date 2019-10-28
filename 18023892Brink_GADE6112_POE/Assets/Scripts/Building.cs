@@ -19,8 +19,7 @@ public abstract class Building : MonoBehaviour
 
     //the abstract methods that will later be overridden
     public abstract void Destruction();
-    //the abstract Save() method
-    //public abstract void Save();
+    public abstract void Damage(float damAmount);
 
     //get setters -  wouldnt work unless i put them in the Building class
     //didnt use set since the value has been set and wont change (see constructor base at the top)
